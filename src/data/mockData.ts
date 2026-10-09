@@ -1,0 +1,743 @@
+export interface Car {
+  id: string;
+  make: string;
+  model: string;
+  year: number;
+  price: number;
+  mileage: number;
+  fuelType: 'Petrol' | 'Diesel' | 'Hybrid' | 'Electric';
+  transmission: 'Automatic' | 'Manual';
+  bodyType: 'Sedan' | 'SUV' | 'Sports Car' | 'Truck' | 'Electric' | 'Coupe';
+  color: string;
+  location: string;
+  image: string;
+  featured?: boolean;
+  verifiedSeller?: boolean;
+  status: 'active' | 'pending' | 'sold' | 'rejected';
+  viewsCount?: number;
+  inquiriesCount?: number;
+  rejectionReason?: string;
+  seller: {
+    name: string;
+    type: 'Dealer' | 'Private';
+    rating: number;
+    phone: string;
+    verified: boolean;
+  };
+}
+
+export interface Brand {
+  name: string;
+  slug: string;
+  logo: string;
+  modelsCount: number;
+}
+
+export interface Category {
+  name: string;
+  subtitle: string;
+  slug: string;
+  image: string;
+  count: number;
+}
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  country: string;
+  countryCode: string;
+  rating: number;
+  review: string;
+  avatar: string;
+  carBought: string;
+}
+
+export interface Article {
+  id: string;
+  tag: string;
+  title: string;
+  date: string;
+  readTime: string;
+  image: string;
+  summary: string;
+}
+
+export interface AutoPart {
+  id: string;
+  name: string;
+  category: 'Brakes & Suspension' | 'Wheels & Tires' | 'Engine & Transmission' | 'Lighting & Electrical' | 'Body & Mirrors' | 'Performance & Exhaust';
+  partNumber: string;
+  price: number;
+  originalPrice?: number;
+  condition: 'Brand New (OEM)' | 'Certified Refurbished' | 'Genuine Used' | 'Aftermarket High Performance';
+  compatibleMakes: string[];
+  compatibleModels: string;
+  inStock: boolean;
+  warranty: string;
+  image: string;
+  rating: number;
+  reviewsCount: number;
+  badge?: string;
+  seller: {
+    name: string;
+    location: string;
+    rating: number;
+    phone: string;
+    verified: boolean;
+  };
+}
+
+export const ALL_BRANDS: Brand[] = [
+  { name: 'Toyota', slug: 'toyota', logo: '🚗', modelsCount: 342 },
+  { name: 'BMW', slug: 'bmw', logo: '⚡', modelsCount: 215 },
+  { name: 'Mercedes-Benz', slug: 'mercedes-benz', logo: '⭐', modelsCount: 198 },
+  { name: 'Audi', slug: 'audi', logo: '🔘', modelsCount: 164 },
+  { name: 'Honda', slug: 'honda', logo: '🏎️', modelsCount: 189 },
+  { name: 'Ford', slug: 'ford', logo: '🚙', modelsCount: 142 },
+  { name: 'Lexus', slug: 'lexus', logo: '✨', modelsCount: 97 },
+  { name: 'Porsche', slug: 'porsche', logo: '🛡️', modelsCount: 76 },
+  { name: 'Tesla', slug: 'tesla', logo: '🔋', modelsCount: 118 },
+  { name: 'Hyundai', slug: 'hyundai', logo: '🚘', modelsCount: 134 },
+  { name: 'Nissan', slug: 'nissan', logo: '🚙', modelsCount: 112 },
+  { name: 'Volkswagen', slug: 'volkswagen', logo: '🚗', modelsCount: 128 },
+  { name: 'Land Rover', slug: 'land-rover', logo: '🏔️', modelsCount: 84 },
+  { name: 'Chevrolet', slug: 'chevrolet', logo: '🏁', modelsCount: 95 },
+  { name: 'Kia', slug: 'kia', logo: '🚙', modelsCount: 105 },
+  { name: 'Jeep', slug: 'jeep', logo: '🏕️', modelsCount: 68 },
+  { name: 'Volvo', slug: 'volvo', logo: '🛡️', modelsCount: 52 },
+  { name: 'Ferrari', slug: 'ferrari', logo: '🐎', modelsCount: 29 },
+  { name: 'Lamborghini', slug: 'lamborghini', logo: '🐂', modelsCount: 24 },
+  { name: 'Mazda', slug: 'mazda', logo: '🏎️', modelsCount: 63 },
+];
+
+export const TOP_BRANDS: Brand[] = ALL_BRANDS.slice(0, 8);
+
+export const ALL_CARS: Car[] = [
+  {
+    id: 'car-1',
+    make: 'Mercedes-Benz',
+    model: 'GLE 350',
+    year: 2023,
+    price: 68000,
+    mileage: 12500,
+    fuelType: 'Petrol',
+    transmission: 'Automatic',
+    bodyType: 'SUV',
+    color: 'Obsidian Black',
+    location: 'Dubai, UAE',
+    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80',
+    featured: true,
+    verifiedSeller: true,
+    status: 'active',
+    viewsCount: 1420,
+    inquiriesCount: 28,
+    seller: {
+      name: 'Al-Futtaim Prestige Auto',
+      type: 'Dealer',
+      rating: 4.9,
+      phone: '+971 50 123 4567',
+      verified: true,
+    },
+  },
+  {
+    id: 'car-2',
+    make: 'Porsche',
+    model: '911 Carrera',
+    year: 2022,
+    price: 125000,
+    mileage: 8200,
+    fuelType: 'Petrol',
+    transmission: 'Automatic',
+    bodyType: 'Sports Car',
+    color: 'Guards Red',
+    location: 'New York, USA',
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80',
+    featured: true,
+    verifiedSeller: true,
+    status: 'active',
+    viewsCount: 2310,
+    inquiriesCount: 45,
+    seller: {
+      name: 'Manhattan Prestige Auto',
+      type: 'Dealer',
+      rating: 5.0,
+      phone: '+1 212 555 0192',
+      verified: true,
+    },
+  },
+  {
+    id: 'car-3',
+    make: 'Range Rover',
+    model: 'Evoque',
+    year: 2021,
+    price: 56500,
+    mileage: 25000,
+    fuelType: 'Petrol',
+    transmission: 'Automatic',
+    bodyType: 'SUV',
+    color: 'Fuji White',
+    location: 'London, UK',
+    image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80',
+    featured: true,
+    verifiedSeller: true,
+    status: 'active',
+    viewsCount: 980,
+    inquiriesCount: 19,
+    seller: {
+      name: 'Mayfair Automotive',
+      type: 'Dealer',
+      rating: 4.8,
+      phone: '+44 20 7946 0912',
+      verified: true,
+    },
+  },
+  {
+    id: 'car-4',
+    make: 'BMW',
+    model: '5 Series',
+    year: 2022,
+    price: 62000,
+    mileage: 18000,
+    fuelType: 'Diesel',
+    transmission: 'Automatic',
+    bodyType: 'Sedan',
+    color: 'Phytonic Blue',
+    location: 'Munich, Germany',
+    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=80',
+    featured: true,
+    verifiedSeller: true,
+    status: 'active',
+    viewsCount: 1150,
+    inquiriesCount: 24,
+    seller: {
+      name: 'Bavaria Motor Group',
+      type: 'Dealer',
+      rating: 4.9,
+      phone: '+49 89 2018 7765',
+      verified: true,
+    },
+  },
+  {
+    id: 'car-5',
+    make: 'Toyota',
+    model: 'Land Cruiser 300',
+    year: 2023,
+    price: 89000,
+    mileage: 14000,
+    fuelType: 'Petrol',
+    transmission: 'Automatic',
+    bodyType: 'SUV',
+    color: 'Pearl White',
+    location: 'Dubai, UAE',
+    image: 'https://images.unsplash.com/photo-1594502184342-2e12f877aa73?auto=format&fit=crop&w=1000&q=80',
+    featured: false,
+    verifiedSeller: true,
+    status: 'active',
+    viewsCount: 1850,
+    inquiriesCount: 38,
+    seller: {
+      name: 'Emirates Auto World',
+      type: 'Dealer',
+      rating: 4.9,
+      phone: '+971 52 987 6543',
+      verified: true,
+    },
+  },
+  {
+    id: 'car-6',
+    make: 'Tesla',
+    model: 'Model S Plaid',
+    year: 2023,
+    price: 84000,
+    mileage: 9500,
+    fuelType: 'Electric',
+    transmission: 'Automatic',
+    bodyType: 'Electric',
+    color: 'Midnight Silver',
+    location: 'New York, USA',
+    image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1000&q=80',
+    featured: false,
+    verifiedSeller: true,
+    status: 'active',
+    viewsCount: 2900,
+    inquiriesCount: 52,
+    seller: {
+      name: 'GreenDrive Motors',
+      type: 'Dealer',
+      rating: 4.7,
+      phone: '+1 212 555 0834',
+      verified: true,
+    },
+  },
+  {
+    id: 'car-7',
+    make: 'Audi',
+    model: 'RS7 Sportback',
+    year: 2022,
+    price: 104000,
+    mileage: 16200,
+    fuelType: 'Petrol',
+    transmission: 'Automatic',
+    bodyType: 'Sports Car',
+    color: 'Nardo Grey',
+    location: 'London, UK',
+    image: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1000&q=80',
+    featured: false,
+    verifiedSeller: true,
+    status: 'active',
+    viewsCount: 1670,
+    inquiriesCount: 31,
+    seller: {
+      name: 'Apex Supercars UK',
+      type: 'Dealer',
+      rating: 4.9,
+      phone: '+44 20 7946 0541',
+      verified: true,
+    },
+  },
+  {
+    id: 'car-8',
+    make: 'Ford',
+    model: 'F-150 Raptor',
+    year: 2022,
+    price: 73000,
+    mileage: 22000,
+    fuelType: 'Petrol',
+    transmission: 'Automatic',
+    bodyType: 'Truck',
+    color: 'Code Orange',
+    location: 'New York, USA',
+    image: 'https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=1000&q=80',
+    featured: false,
+    verifiedSeller: true,
+    status: 'active',
+    viewsCount: 1300,
+    inquiriesCount: 22,
+    seller: {
+      name: 'Tri-State Truck Hub',
+      type: 'Dealer',
+      rating: 4.6,
+      phone: '+1 212 555 0419',
+      verified: true,
+    },
+  },
+  {
+    id: 'car-9',
+    make: 'Honda',
+    model: 'Civic Type R',
+    year: 2023,
+    price: 43500,
+    mileage: 7800,
+    fuelType: 'Petrol',
+    transmission: 'Manual',
+    bodyType: 'Sports Car',
+    color: 'Championship White',
+    location: 'London, UK',
+    image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80',
+    featured: false,
+    verifiedSeller: false,
+    status: 'active',
+    viewsCount: 890,
+    inquiriesCount: 17,
+    seller: {
+      name: 'Alex Turner',
+      type: 'Private',
+      rating: 4.8,
+      phone: '+44 77 0090 0123',
+      verified: true,
+    },
+  },
+  {
+    id: 'car-10',
+    make: 'Toyota',
+    model: 'Camry Hybrid XLE',
+    year: 2021,
+    price: 28500,
+    mileage: 38000,
+    fuelType: 'Hybrid',
+    transmission: 'Automatic',
+    bodyType: 'Sedan',
+    color: 'Celestial Silver',
+    location: 'Dubai, UAE',
+    image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1000&q=80',
+    featured: false,
+    verifiedSeller: false,
+    status: 'active',
+    viewsCount: 650,
+    inquiriesCount: 14,
+    seller: {
+      name: 'Rashid Khan',
+      type: 'Private',
+      rating: 4.7,
+      phone: '+971 55 432 1987',
+      verified: true,
+    },
+  },
+  {
+    id: 'car-11',
+    make: 'BMW',
+    model: 'M4 Competition',
+    year: 2023,
+    price: 88500,
+    mileage: 6200,
+    fuelType: 'Petrol',
+    transmission: 'Automatic',
+    bodyType: 'Coupe',
+    color: 'Isle of Man Green',
+    location: 'Munich, Germany',
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80',
+    featured: false,
+    verifiedSeller: true,
+    status: 'pending', // Pending review for Admin Queue (PRD ADM-1)
+    viewsCount: 0,
+    inquiriesCount: 0,
+    seller: {
+      name: 'Klaus Schmidt',
+      type: 'Private',
+      rating: 5.0,
+      phone: '+49 171 2345678',
+      verified: true,
+    },
+  },
+  {
+    id: 'car-12',
+    make: 'Mercedes-Benz',
+    model: 'C300 AMG Line',
+    year: 2022,
+    price: 49000,
+    mileage: 21000,
+    fuelType: 'Petrol',
+    transmission: 'Automatic',
+    bodyType: 'Sedan',
+    color: 'Polar White',
+    location: 'Dubai, UAE',
+    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80',
+    featured: false,
+    verifiedSeller: false,
+    status: 'pending', // Pending review for Admin Queue (PRD ADM-1)
+    viewsCount: 0,
+    inquiriesCount: 0,
+    seller: {
+      name: 'Tariq Mansoor',
+      type: 'Private',
+      rating: 4.6,
+      phone: '+971 50 876 5432',
+      verified: true,
+    },
+  },
+];
+
+export const FEATURED_CARS = ALL_CARS.filter((c) => c.featured);
+
+export const CATEGORIES: Category[] = [
+  {
+    name: 'Sedan',
+    subtitle: 'Comfort & Style',
+    slug: 'sedan',
+    image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80',
+    count: 420,
+  },
+  {
+    name: 'SUV',
+    subtitle: 'Space & Adventure',
+    slug: 'suv',
+    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80',
+    count: 654,
+  },
+  {
+    name: 'Sports Car',
+    subtitle: 'Power & Performance',
+    slug: 'sports-car',
+    image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80',
+    count: 182,
+  },
+  {
+    name: 'Truck',
+    subtitle: 'Work & Play',
+    slug: 'truck',
+    image: 'https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=800&q=80',
+    count: 145,
+  },
+  {
+    name: 'Electric',
+    subtitle: 'Clean & Future',
+    slug: 'electric',
+    image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=800&q=80',
+    count: 230,
+  },
+];
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: 'test-1',
+    name: 'James Carter',
+    country: 'USA',
+    countryCode: '🇺🇸',
+    rating: 5,
+    review:
+      '"The process was smooth and professional. I found my dream car at a great price with complete vehicle history. Highly recommended!"',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    carBought: 'BMW M4 Competition',
+  },
+  {
+    id: 'test-2',
+    name: 'Sarah Mitchell',
+    country: 'UK',
+    countryCode: '🇬🇧',
+    rating: 5,
+    review:
+      '"Excellent service, quick response, and very helpful support. I will definitely buy again and recommend to all my friends."',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
+    carBought: 'Mercedes-Benz C300',
+  },
+  {
+    id: 'test-3',
+    name: 'Daniel Kim',
+    country: 'UAE',
+    countryCode: '🇦🇪',
+    rating: 5,
+    review:
+      '"Best car buying experience I\'ve ever had. The website is easy to use and the team is amazing with rapid phone verification."',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+    carBought: 'Porsche Macan GTS',
+  },
+];
+
+export const STATS = [
+  { label: 'Happy Customers', value: '50K+' },
+  { label: 'Cars Sold', value: '10K+' },
+  { label: 'Trusted Dealers', value: '200+' },
+  { label: 'Average Rating', value: '4.8 ★' },
+];
+
+export const ARTICLES: Article[] = [
+  {
+    id: 'art-1',
+    tag: 'Buying Guide',
+    title: 'Top 5 Things to Check Before Buying a Used Car',
+    date: 'May 20, 2025',
+    readTime: '4 min read',
+    image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&q=80',
+    summary: 'A crucial pre-purchase inspection checklist to make sure you never buy a lemon.',
+  },
+  {
+    id: 'art-2',
+    tag: 'Car News',
+    title: 'The Future of Electric Cars in 2025 and Beyond',
+    date: 'May 18, 2025',
+    readTime: '6 min read',
+    image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=600&q=80',
+    summary: 'From solid-state batteries to next-gen fast charging networks reshaping the industry.',
+  },
+  {
+    id: 'art-3',
+    tag: 'Maintenance',
+    title: 'How to Keep Your Car in Top Condition',
+    date: 'May 15, 2025',
+    readTime: '5 min read',
+    image: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&q=80',
+    summary: 'Routine maintenance habits that preserve resale value and avoid expensive shop repairs.',
+  },
+  {
+    id: 'art-4',
+    tag: 'Market Trends',
+    title: 'Best SUVs for Families in 2025',
+    date: 'May 11, 2025',
+    readTime: '5 min read',
+    image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=600&q=80',
+    summary: 'Comparing the safest, most spacious, and best-value midsize and fullsize family SUVs.',
+  },
+];
+
+export const MOCK_PARTS: AutoPart[] = [
+  {
+    id: 'part-1',
+    name: 'Brembo GT 6-Piston Carbon-Ceramic Brake Kit',
+    category: 'Brakes & Suspension',
+    partNumber: 'OEM-BRM-GT-6P-992',
+    price: 1850,
+    originalPrice: 2200,
+    condition: 'Brand New (OEM)',
+    compatibleMakes: ['Porsche', 'Audi', 'BMW'],
+    compatibleModels: 'Porsche 911 (992), 718 Cayman, Audi R8, RS6 Avant',
+    inStock: true,
+    warranty: '24 Months International Warranty',
+    image: 'https://images.unsplash.com/photo-1600705722908-bab1e61c0b4d?auto=format&fit=crop&w=800&q=80',
+    rating: 4.9,
+    reviewsCount: 42,
+    badge: 'Best Seller',
+    seller: {
+      name: 'Apex Motor Performance',
+      location: 'Dubai Industrial City, UAE',
+      rating: 4.9,
+      phone: '+971 50 882 1928',
+      verified: true,
+    },
+  },
+  {
+    id: 'part-2',
+    name: 'Michelin Pilot Sport 4S 265/35ZR20 Performance Tire Set',
+    category: 'Wheels & Tires',
+    partNumber: 'MCH-PS4S-20-SET',
+    price: 1190,
+    originalPrice: 1350,
+    condition: 'Brand New (OEM)',
+    compatibleMakes: ['BMW', 'Mercedes-Benz', 'Audi', 'Porsche'],
+    compatibleModels: 'BMW M3/M4, Mercedes C63 AMG, Audi RS5, Porsche Macan',
+    inStock: true,
+    warranty: '50,000 km Treadwear Warranty',
+    image: 'https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&w=800&q=80',
+    rating: 5.0,
+    reviewsCount: 68,
+    badge: 'Popular',
+    seller: {
+      name: 'Gulf Tire & Wheel Pro',
+      location: 'Al Quoz, Dubai',
+      rating: 4.8,
+      phone: '+971 52 345 6789',
+      verified: true,
+    },
+  },
+  {
+    id: 'part-3',
+    name: 'Akrapovič Evolution Titanium Slip-On Exhaust System',
+    category: 'Performance & Exhaust',
+    partNumber: 'AKR-EVO-TIT-G80',
+    price: 3450,
+    originalPrice: 3890,
+    condition: 'Aftermarket High Performance',
+    compatibleMakes: ['BMW'],
+    compatibleModels: 'BMW M3 (G80), M4 (G82), M5 Competition (F90)',
+    inStock: true,
+    warranty: '36 Months Manufacturer Warranty',
+    image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80',
+    rating: 4.9,
+    reviewsCount: 31,
+    badge: 'High Performance',
+    seller: {
+      name: 'Exotic Motorsports Tuning',
+      location: 'Abu Dhabi, UAE',
+      rating: 5.0,
+      phone: '+971 55 991 2233',
+      verified: true,
+    },
+  },
+  {
+    id: 'part-4',
+    name: 'Hella Full Matrix Adaptive LED Headlight Assembly (Pair)',
+    category: 'Lighting & Electrical',
+    partNumber: 'HLA-LED-AUD-B9',
+    price: 1420,
+    originalPrice: 1680,
+    condition: 'Brand New (OEM)',
+    compatibleMakes: ['Audi', 'Volkswagen'],
+    compatibleModels: 'Audi A4, S4, A5, RS5 (2018-2024 Models)',
+    inStock: true,
+    warranty: '12 Months Replacement Warranty',
+    image: 'https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=800&q=80',
+    rating: 4.8,
+    reviewsCount: 19,
+    seller: {
+      name: 'Euro Auto Spares Direct',
+      location: 'Sharjah Auto Zone',
+      rating: 4.7,
+      phone: '+971 50 711 4422',
+      verified: true,
+    },
+  },
+  {
+    id: 'part-5',
+    name: 'Garrett G30-770 Twin-Scroll Ball Bearing Turbocharger',
+    category: 'Engine & Transmission',
+    partNumber: 'GRT-G30-770-TS',
+    price: 2150,
+    originalPrice: 2450,
+    condition: 'Brand New (OEM)',
+    compatibleMakes: ['Toyota', 'BMW'],
+    compatibleModels: 'Toyota GR Supra A90/A91, BMW B58 & S58 Engines',
+    inStock: true,
+    warranty: '18 Months Warranty',
+    image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80',
+    rating: 4.9,
+    reviewsCount: 27,
+    badge: 'Track Ready',
+    seller: {
+      name: 'TurboTech Racing Supplies',
+      location: 'Dubai Auto City',
+      rating: 4.9,
+      phone: '+971 54 321 0987',
+      verified: true,
+    },
+  },
+  {
+    id: 'part-6',
+    name: 'BBS Super RS 20" Forged Alloy Wheel Set (4 Rims)',
+    category: 'Wheels & Tires',
+    partNumber: 'BBS-SRS-2095-5112',
+    price: 2850,
+    originalPrice: 3200,
+    condition: 'Brand New (OEM)',
+    compatibleMakes: ['Mercedes-Benz', 'Audi', 'Volkswagen', 'Porsche'],
+    compatibleModels: 'Mercedes E-Class, S-Class, Audi A6/A7, Porsche Macan',
+    inStock: true,
+    warranty: 'Lifetime Structural Warranty',
+    image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80',
+    rating: 5.0,
+    reviewsCount: 53,
+    badge: 'Exclusive',
+    seller: {
+      name: 'Apex Motor Performance',
+      location: 'Dubai Industrial City, UAE',
+      rating: 4.9,
+      phone: '+971 50 882 1928',
+      verified: true,
+    },
+  },
+  {
+    id: 'part-7',
+    name: 'KW Suspension Variant 3 Inox-Line Coilover Kit',
+    category: 'Brakes & Suspension',
+    partNumber: 'KW-V3-352200-TOY',
+    price: 2280,
+    originalPrice: 2500,
+    condition: 'Brand New (OEM)',
+    compatibleMakes: ['Toyota', 'Subaru'],
+    compatibleModels: 'Toyota GR Yaris, GR Corolla, GR86, Subaru BRZ (2020-2025)',
+    inStock: true,
+    warranty: '24 Months Warranty',
+    image: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80',
+    rating: 4.8,
+    reviewsCount: 35,
+    seller: {
+      name: 'Motorsport Dynamics',
+      location: 'Al Quoz, Dubai',
+      rating: 4.8,
+      phone: '+971 56 123 7890',
+      verified: true,
+    },
+  },
+  {
+    id: 'part-8',
+    name: 'M Performance Dry Carbon Fiber Mirror Caps & Trunk Lip',
+    category: 'Body & Mirrors',
+    partNumber: 'BMW-MP-CF-G20',
+    price: 890,
+    originalPrice: 1050,
+    condition: 'Brand New (OEM)',
+    compatibleMakes: ['BMW'],
+    compatibleModels: 'BMW 3 Series (G20), 4 Series Gran Coupe (G26), M340i',
+    inStock: true,
+    warranty: '12 Months Fitment Guarantee',
+    image: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80',
+    rating: 4.9,
+    reviewsCount: 48,
+    badge: 'OEM Genuine',
+    seller: {
+      name: 'Euro Auto Spares Direct',
+      location: 'Sharjah Auto Zone',
+      rating: 4.7,
+      phone: '+971 50 711 4422',
+      verified: true,
+    },
+  },
+];
