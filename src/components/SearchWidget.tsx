@@ -27,7 +27,7 @@ export default function SearchWidget({ onSearch, onValuationStart }: SearchWidge
       case 'Porsche':
         return ['All Models', '911 Carrera', 'Cayenne', 'Macan GTS', 'Taycan', 'Panamera'];
       case 'Toyota':
-        return ['All Models', 'Land Cruiser', 'Camry', 'RAV4', 'Corolla', 'Supra'];
+        return ['All Models', 'Premio', 'Allion', 'Corolla Axio', 'Noah', 'Harrier', 'Land Cruiser', 'Camry', 'RAV4'];
       case 'Range Rover':
         return ['All Models', 'Evoque', 'Sport', 'Velar', 'Vogue'];
       default:
@@ -172,11 +172,14 @@ export default function SearchWidget({ onSearch, onValuationStart }: SearchWidge
                   className="w-full bg-transparent text-sm font-semibold text-slate-800 focus:outline-none appearance-none pr-6 cursor-pointer"
                 >
                   <option value="">Any Location</option>
+                  <option value="Dhaka">Dhaka, Bangladesh</option>
+                  <option value="Gulshan">Dhaka - Gulshan</option>
+                  <option value="Uttara">Dhaka - Uttara</option>
+                  <option value="Chittagong">Chittagong, Bangladesh</option>
                   <option value="Dubai, UAE">Dubai, UAE</option>
                   <option value="New York, USA">New York, USA</option>
                   <option value="London, UK">London, UK</option>
                   <option value="Munich, Germany">Munich, Germany</option>
-                  <option value="Lahore, PK">Lahore, PK</option>
                 </select>
                 <ChevronDown className="w-4 h-4 text-slate-400 absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
