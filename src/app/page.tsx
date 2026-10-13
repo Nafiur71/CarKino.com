@@ -4,7 +4,6 @@ import React, { useState, useMemo } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import TopBrandsSection from '@/components/TopBrandsSection';
-import PopularBdCarsSection from '@/components/PopularBdCarsSection';
 import FeaturedCarsSection from '@/components/FeaturedCarsSection';
 import WhyChooseUsSection from '@/components/WhyChooseUsSection';
 import ShopByCategorySection from '@/components/ShopByCategorySection';
@@ -124,19 +123,6 @@ export default function Home() {
         <TopBrandsSection
           selectedBrand={selectedBrand}
           onSelectBrand={(brand) => setSelectedBrand(brand)}
-        />
-
-        {/* 3.5. Bangladesh Most Popular Cars (Toyota Premio & Allion Spotlight) */}
-        <PopularBdCarsSection
-          onFilterMakeModel={(make, model) => {
-            setSelectedBrand(make);
-            setSearchFilters({ make, model, price: '', location: '' });
-            const el = document.getElementById('featured-cars');
-            el?.scrollIntoView({ behavior: 'smooth' });
-          }}
-          onOpenEmi={() => {
-            setIsEmiOpen(true);
-          }}
         />
 
         {/* 4. Handpicked Premium Cars (Dark Navy Section) */}

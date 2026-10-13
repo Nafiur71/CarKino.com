@@ -17,7 +17,6 @@ import {
 import { Car } from '@/data/mockData';
 import { useCars } from '@/context/CarContext';
 import EmiCalculatorModal from './EmiCalculatorModal';
-import BrandLogo from './BrandLogo';
 
 interface CarDetailModalProps {
   car: Car | null;
@@ -97,30 +96,16 @@ export default function CarDetailModal({
           </div>
 
           {/* Title & Price Header */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 p-2 flex items-center justify-center shrink-0 shadow-md">
-                <BrandLogo
-                  name={
-                    car.model.toLowerCase().includes('premio')
-                      ? 'premio'
-                      : car.model.toLowerCase().includes('allion')
-                      ? 'allion'
-                      : car.make
-                  }
-                  className="w-full h-full"
-                />
-              </div>
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-black text-white">
-                  {car.make} {car.model}
-                </h2>
-                <div className="flex items-center gap-2 text-xs text-slate-400 mt-1">
-                  <MapPin className="w-3.5 h-3.5 text-[#FF5B26]" />
-                  <span>{car.location}</span>
-                  <span>&bull;</span>
-                  <span>ID: #{car.id.toUpperCase()}</span>
-                </div>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white">
+                {car.make} {car.model}
+              </h2>
+              <div className="flex items-center gap-2 text-xs text-slate-400 mt-1">
+                <MapPin className="w-3.5 h-3.5 text-[#FF5B26]" />
+                <span>{car.location}</span>
+                <span>&bull;</span>
+                <span>ID: #{car.id.toUpperCase()}</span>
               </div>
             </div>
             <div className="text-left sm:text-right">
